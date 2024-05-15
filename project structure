@@ -1,0 +1,19 @@
+quality-log-control/
+├── ingestor/
+│   ├── log_ingestor.py
+│   ├── config.yaml
+│   ├── log1.log
+│   ├── log2.log
+│   └── ...
+├── query_interface/
+│   ├── app.py
+│   ├── templates/
+│   │   ├── index.html
+│   ├── static/
+│   │   ├── styles.css
+│   ├── logs/
+│   │   ├── log1.log
+│   │   ├── log2.log
+│   └── ...
+├── README.md
+└── requirements.txt
