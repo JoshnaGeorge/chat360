@@ -1,0 +1,7 @@
+fetch_interval: 60  # in seconds
+apis:
+  - url: "http://api1.example.com/logs"
+    log_file: "log1.log"
+  - url: "http://api2.example.com/logs"
+    log_file: "log2.log"
+  # Add more APIs as needed
