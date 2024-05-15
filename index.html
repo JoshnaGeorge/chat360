@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Log Query Interface</title>
+    <link rel="stylesheet" type="text/css" href="/static/styles.css">
+</head>
+<body>
+    <h1>Log Query Interface</h1>
+    <form id="search-form">
+        <label for="level">Log Level:</label>
+        <select id="level" name="level">
+            <option value="">Any</option>
+            <option value="info">Info</option>
+            <option value="error">Error</option>
+            <option value="success">Success</option>
+        </select>
+        <br>
+        <label for="log_string">Log String:</label>
+        <input type="text" id="log_string" name="log_string">
+        <br>
+        <label for="start_time">Start Time:</label>
+        <input type="datetime-local" id="start_time" name="start_time">
+        <br>
+        <label for="end_time">End Time:</label>
+        <input type="datetime-local" id="end_time" name="end_time">
+        <br>
+        <label for="source">Source:</label>
+        <input type="text" id="source" name="source">
+        <br>
+        <button type="button" onclick="searchLogs()">Search</button>
+    </form>
+    <div id="results"></div>
+    <script>
+        function searchLogs() {
+            const form = document.getElementById('search-form');
+            const params = new URLSearchParams(new FormData(form)).toString();
+            fetch(`/search?${params}`)
+                .then(response => response.json())
+                .then(data => {
+                    const resultsDiv = document.getElementById('results');
+                    resultsDiv.innerHTML = JSON.stringify(data, null, 2);
+                });
+        }
+    </script>
+</body>
+</html>
